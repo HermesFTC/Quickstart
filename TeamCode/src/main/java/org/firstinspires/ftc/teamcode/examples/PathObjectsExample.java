@@ -1,17 +1,19 @@
 package org.firstinspires.ftc.teamcode.examples;
 
-import com.acmerobotics.roadrunner.ftc.DisplacementFollower;
-import com.acmerobotics.roadrunner.ftc.Follower;
-import com.acmerobotics.roadrunner.geometry.Pose2d;
-import com.acmerobotics.roadrunner.geometry.Vector2d;
-import com.acmerobotics.roadrunner.paths.BezierCurves;
-import com.acmerobotics.roadrunner.paths.Line;
-import com.acmerobotics.roadrunner.paths.PosePath;
-import com.acmerobotics.roadrunner.trajectories.DisplacementTrajectory;
+
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import org.firstinspires.ftc.teamcode.MecanumDrive;
+import gay.zharel.hermes.ftc.DisplacementFollower;
+import gay.zharel.hermes.ftc.Follower;
+import gay.zharel.hermes.ftc.MecanumDrive;
+import gay.zharel.hermes.geometry.Pose2d;
+import gay.zharel.hermes.geometry.Vector2d;
+import gay.zharel.hermes.paths.BezierCurves;
+import gay.zharel.hermes.paths.Line;
+import gay.zharel.hermes.paths.PosePath;
+import gay.zharel.hermes.trajectories.DisplacementTrajectory;
+import org.firstinspires.ftc.teamcode.MecanumDriveFactory;
 
 @Autonomous
 @Disabled
@@ -21,7 +23,7 @@ public class PathObjectsExample extends OpMode {
 
     @Override
     public void init() {
-        drive = new MecanumDrive(hardwareMap, new Pose2d(0.0, 0.0, 0.0));
+        drive = MecanumDriveFactory.build(hardwareMap, new Pose2d(0.0, 0.0, 0.0));
 
         PosePath path1 = new Line(
                 new Vector2d(0.0, 0.0),

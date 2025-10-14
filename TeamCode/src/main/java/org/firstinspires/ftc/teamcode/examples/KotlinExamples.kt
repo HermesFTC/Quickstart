@@ -1,21 +1,23 @@
 package org.firstinspires.ftc.teamcode.examples
 
-import com.acmerobotics.roadrunner.actions.Action
-import com.acmerobotics.roadrunner.ftc.Follower
-import com.acmerobotics.roadrunner.actions.ActionRunner
-import com.acmerobotics.roadrunner.ftc.DisplacementFollower
-import com.acmerobotics.roadrunner.geometry.Arclength
-import com.acmerobotics.roadrunner.geometry.Pose2d
-import com.acmerobotics.roadrunner.geometry.Vector2d
-import com.acmerobotics.roadrunner.paths.Line
-import com.acmerobotics.roadrunner.paths.PosePath
-import com.acmerobotics.roadrunner.paths.fromPoints
-import com.acmerobotics.roadrunner.trajectories.Trajectory
+
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous
 import com.qualcomm.robotcore.eventloop.opmode.Disabled
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode
 import com.qualcomm.robotcore.eventloop.opmode.OpMode
-import org.firstinspires.ftc.teamcode.MecanumDrive
+import gay.zharel.hermes.actions.Action
+import gay.zharel.hermes.actions.ActionRunner
+import gay.zharel.hermes.ftc.DisplacementFollower
+import gay.zharel.hermes.ftc.Follower
+import gay.zharel.hermes.ftc.MecanumDrive
+import gay.zharel.hermes.geometry.Pose2d
+import gay.zharel.hermes.geometry.Vector2d
+import gay.zharel.hermes.math.Arclength
+import gay.zharel.hermes.paths.Line
+import gay.zharel.hermes.paths.PosePath
+import gay.zharel.hermes.paths.fromPoints
+import gay.zharel.hermes.trajectories.Trajectory
+import org.firstinspires.ftc.teamcode.MecanumDriveFactory
 
 @Autonomous
 @Disabled
@@ -27,7 +29,7 @@ class ActionBuilderExampleKt: LinearOpMode() {
     lateinit var action: Action
 
     override fun runOpMode() {
-        drive = MecanumDrive(hardwareMap, Pose2d(0.0, 0.0, 0.0))
+        drive = MecanumDriveFactory.build(hardwareMap, Pose2d(0.0, 0.0, 0.0))
         action = drive.actionBuilder()
             .forward(10.0)
             .splineTo(Vector2d(10.0, 10.0), Math.toRadians(90.0))
@@ -48,7 +50,7 @@ class FollowerExampleKt: OpMode() {
     private lateinit var follower: Follower
 
     override fun init() {
-        drive = MecanumDrive(hardwareMap, Pose2d(0.0, 0.0, 0.0))
+        drive = MecanumDriveFactory.build(hardwareMap, Pose2d(0.0, 0.0, 0.0))
         val traj: Trajectory<Arclength> = drive.trajectoryBuilder()
             .forward(10.0)
             .splineTo(Vector2d(10.0, 10.0), Math.toRadians(90.0))
@@ -71,7 +73,7 @@ class PathObjectsExampleKt : OpMode() {
     private lateinit var follower: Follower
 
     override fun init() {
-        drive = MecanumDrive(hardwareMap, Pose2d(0.0, 0.0, 0.0))
+        drive = MecanumDriveFactory.build(hardwareMap, Pose2d(0.0, 0.0, 0.0))
 
         val path1: PosePath = Line(
             Vector2d(0.0, 0.0),

@@ -1,14 +1,15 @@
 package org.firstinspires.ftc.teamcode.examples;
 
-import com.acmerobotics.roadrunner.actions.Action;
-import com.acmerobotics.roadrunner.actions.ActionRunner;
-import com.acmerobotics.roadrunner.geometry.Pose2d;
-import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.teamcode.MecanumDrive;
+import gay.zharel.hermes.actions.Action;
+import gay.zharel.hermes.actions.ActionRunner;
+import gay.zharel.hermes.ftc.MecanumDrive;
+import gay.zharel.hermes.geometry.Pose2d;
+import gay.zharel.hermes.geometry.Vector2d;
+import org.firstinspires.ftc.teamcode.MecanumDriveFactory;
 
 @Autonomous
 @Disabled
@@ -18,7 +19,7 @@ public class ActionBuilderExample extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        drive = new MecanumDrive(hardwareMap, new Pose2d(0.0, 0.0, 0.0));
+        drive = MecanumDriveFactory.build(hardwareMap, new Pose2d(0.0, 0.0, 0.0));
         action = drive.actionBuilder()
                 .forward(10.0)
                 .splineTo(new Vector2d(10.0, 10.0), Math.toRadians(90.0))
