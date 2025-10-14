@@ -1,4 +1,3 @@
-# NextRunner Quickstart
+# Hermes Quickstart
 
-Check out the [docs](https://next.zharel.me/nextrunner/).
-
+Check out the [docs](https://hermes.zharel.gay/)!
