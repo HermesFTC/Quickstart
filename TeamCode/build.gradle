@@ -30,8 +30,13 @@ android {
 
 repositories {
     mavenCentral()
+    mavenLocal()
+    maven { url = "https://maven.brott.dev/" }
 }
 
 dependencies {
     implementation project(':FtcRobotController')
+
+    implementation "gay.zharel.hermes:ftc:0.3.2-local"
+    implementation "com.acmerobotics.dashboard:dashboard:0.5.0"
 }
